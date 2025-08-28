@@ -73,7 +73,6 @@ module.exports = nextConfig;
     "graphql-request": "^7.2.0",
     "lucide-react": "^0.542.0",
     "next": "^15.5.2",
-    "next-intl": "^4.3.5",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
@@ -222,7 +221,6 @@ module.exports = {
       "lib/*": ["./src/lib/*"],
       "hooks/*": ["./src/hooks/*"],
       "ui/*": ["./src/components/ui/*"],
-      "i18n/*": ["./i18n/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -247,30 +245,6 @@ module.exports = {
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
-
-
---- FILE: .\i18n\navigation.ts ---
-// i18n/navigation.ts
-// This is a placeholder for the actual i18n navigation Link component.
-// In a real Next.js i18n setup, this would typically be generated or provided by a library.
-import Link from "next/link";
-
-export { Link };
-
-
---- FILE: .\src\middleware.ts ---
-import createMiddleware from 'next-intl/middleware';
-
-export default createMiddleware({
-  locales: ['lt'], // <<< Liko tik 'lt'
-  defaultLocale: 'lt', // <<< Paliekame 'lt'
-  localePrefix: 'never' // <<< Niekada nenaudoti prefikso
-});
-
-export const config = {
-  // Atnaujintas matcher, kuris veikia su viena kalba
-  matcher: ['/((?!api|_next|.*\\..*).*)']
-};
 
 
 --- FILE: .\src\app\globals.css ---
@@ -582,9 +556,10 @@ type Props = {
   children: ReactNode;
 };
 
+// The 'params: { locale }' object has been removed from the function signature.
 export default function RootLayout({ children }: Props) {
   return (
-    // Nurodome kalbą tiesiogiai čia
+    // The lang attribute is now hardcoded to "lt".
     <html lang="lt" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
@@ -816,7 +791,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "src/components/ui/card
 import { Button } from "src/components/ui/button";
 import { Rocket, Gem } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { SynergyIcon } from "./SynergyIcon"; // Importuojame naują komponentą
 import { motion, Variants } from "framer-motion"; // Importuojame framer-motion ir Variants
 
@@ -1163,7 +1138,7 @@ export const FeaturesSection = () => {
 "use client";
 import { AnimatedSection } from "./AnimatedSection";
 import { Button } from "src/components/ui/button";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { Gift } from 'lucide-react';
 
 export const FinalCtaSection = () => {
@@ -1211,7 +1186,7 @@ export const FinalCtaSection = () => {
 
 --- FILE: .\src\components\homepage\Footer.tsx ---
 // src/components/homepage/Footer.tsx
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { Twitter, Linkedin, Facebook, Send } from 'lucide-react';
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -1314,7 +1289,7 @@ export const GradientDivider = () => {
 // src/components/homepage/Header.tsx
 "use client";
 import { useState } from 'react';
-import { Link } from 'i18n/navigation';
+import Link from "next/link";
 import { Button, buttonVariants } from 'src/components/ui/button';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, Sun, Moon, BookOpenCheck } from 'lucide-react';
@@ -1554,7 +1529,7 @@ import { Card } from "src/components/ui/card";
 import { Check, Info, Link as LinkIcon, Sparkles, Star, RefreshCw, X, FileText } from "lucide-react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { AnimatedSection } from "./AnimatedSection";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { getImageForTopic } from "src/lib/image-map";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "src/components/ui/tooltip";
 import { Badge } from "src/components/ui/badge";
@@ -2118,7 +2093,7 @@ import { AnimatedSection } from "./AnimatedSection";
 import { Button } from "src/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "src/components/ui/card";
 import { Check } from "lucide-react";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { HeroParticles } from "./effects/HeroParticles";
 
 const plans = [
@@ -3899,13 +3874,5 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-
-
---- FILE: .\src\messages\et.json ---
-{}
-
-
---- FILE: .\src\messages\lv.json ---
-{}
 
 
