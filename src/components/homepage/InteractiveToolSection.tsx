@@ -7,7 +7,7 @@ import { Card } from "src/components/ui/card";
 import { Check, Info, Link as LinkIcon, Sparkles, Star, RefreshCw, X, FileText } from "lucide-react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { AnimatedSection } from "./AnimatedSection";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { getImageForTopic } from "src/lib/image-map";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "src/components/ui/tooltip";
 import { Badge } from "src/components/ui/badge";

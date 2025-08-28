@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "src/components/ui/card
 import { Button } from "src/components/ui/button";
 import { Rocket, Gem } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { SynergyIcon } from "./SynergyIcon"; // Importuojame naują komponentą
 import { motion, Variants } from "framer-motion"; // Importuojame framer-motion ir Variants
 

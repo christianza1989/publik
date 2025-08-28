@@ -1,5 +1,5 @@
 // src/components/homepage/Footer.tsx
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { Twitter, Linkedin, Facebook, Send } from 'lucide-react';
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";

@@ -1,34 +1,17 @@
 // src/components/homepage/Header.tsx
 "use client";
-import { useState, useEffect } from 'react';
-import { Link } from 'i18n/navigation';
+import { useState } from 'react';
+import Link from "next/link";
 import { Button, buttonVariants } from 'src/components/ui/button';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Menu, X, Globe, Sun, Moon, BookOpenCheck } from 'lucide-react';
+import { Menu, X, Sun, Moon, BookOpenCheck } from 'lucide-react';
 import { useTheme } from "next-themes";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from 'ui/dropdown-menu';
-import { usePathname } from 'next/navigation';
-
-const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'lt', name: 'Lietuvių', flag: '🇱🇹' },
-  { code: 'lv', name: 'Latviešu', flag: '🇱🇻' },
-  { code: 'et', name: 'Eesti', flag: '🇪🇪' },
-];
 
 export const Header = () => {
   const { setTheme, theme } = useTheme();
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const pathname = usePathname();
-  const currentLocale = languages.find(lang => pathname.startsWith(`/${lang.code}`))?.code || 'en';
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() || 0;
@@ -42,7 +25,6 @@ export const Header = () => {
   const navLinks = [
     { href: '#how-it-works', label: 'Kaip veikia?' },
     { href: '#features', label: 'Privalumai' },
-    { href: '#testimonials', label: 'Atsiliepimai' },
     { href: '#pricing', label: 'Kainodara' },
     { href: '#faq', label: 'DUK' },
 ];
@@ -83,23 +65,6 @@ export const Header = () => {
                 <span className="sr-only">Toggle theme</span>
               </Button>
               
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="text-white border-white/20 bg-transparent hover:bg-white/10 hover:text-white">
-                    <Globe className="h-4 w-4 mr-2" />
-                    {currentLocale.toUpperCase()}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  {languages.map(lang => (
-                    <DropdownMenuItem key={lang.code} asChild>
-                       <Link href={pathname.replace(`/${currentLocale}`, `/${lang.code}`)} locale={lang.code} legacyBehavior={false}>
-                        {lang.flag} {lang.name}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
               <a href="https://portal.publikuota.lt/lt/login" className={buttonVariants({ variant: "ghost", className: "text-white hover:bg-white/10 hover:text-white" })}>Prisijungti</a>
               <a href="https://portal.publikuota.lt/lt/signup" className={buttonVariants({ className: "bg-indigo-600 hover:bg-indigo-700" })}>Registruotis</a>
             </div>

@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "src/components/homepage/Header";
-import { ThemeProvider } from "src/components/ThemeProvider"; // <<< PRIDĖTA
+import { ThemeProvider } from "src/components/ThemeProvider";
 import { BackToTopButton } from "src/components/BackToTopButton";
+import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,13 +14,14 @@ export const metadata: Metadata = {
   description: "Automatizuota turinio rinkodaros platforma",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function RootLayout({ children }: Props) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    // Nurodome kalbą tiesiogiai čia
+    <html lang="lt" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

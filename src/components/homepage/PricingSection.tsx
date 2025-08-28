@@ -3,7 +3,7 @@ import { AnimatedSection } from "./AnimatedSection";
 import { Button } from "src/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "src/components/ui/card";
 import { Check } from "lucide-react";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { HeroParticles } from "./effects/HeroParticles";
 
 const plans = [
