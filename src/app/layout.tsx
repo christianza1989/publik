@@ -18,9 +18,10 @@ type Props = {
   children: ReactNode;
 };
 
+// The 'params: { locale }' object has been removed from the function signature.
 export default function RootLayout({ children }: Props) {
   return (
-    // Nurodome kalbą tiesiogiai čia
+    // The lang attribute is now hardcoded to "lt".
     <html lang="lt" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
