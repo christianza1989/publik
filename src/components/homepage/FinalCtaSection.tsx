@@ -4,6 +4,7 @@ import { AnimatedSection } from "./AnimatedSection";
 import { Button } from "src/components/ui/button";
 import Link from "next/link";
 import { Gift } from 'lucide-react';
+import Image from 'next/image';
 
 export const FinalCtaSection = () => {
   return (
@@ -12,10 +13,12 @@ export const FinalCtaSection = () => {
         {/* Pagrindinis konteineris su paveikslėliu fone */}
         <div className="relative isolate overflow-hidden rounded-3xl shadow-2xl">
           {/* Foninis paveikslėlis */}
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2073&auto=format&fit=crop"
-            alt="Modern office"
-            className="absolute inset-0 h-full w-full object-cover"
+            alt="Komanda dirba moderniame biure"
+            fill
+            priority
+            className="absolute inset-0 h-full w-full object-cover -z-10"
           />
           {/* Tamsus permatomas sluoksnis */}
           <div className="absolute inset-0 bg-gray-900/60 mix-blend-multiply" />

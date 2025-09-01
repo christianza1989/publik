@@ -95,7 +95,7 @@ export const FaqSection = () => {
                 </div>
 
                 {/* Dešinė pusė: Vizualinis elementas */}
-                <div className="hidden lg:block sticky top-24">
+                <div className="hidden lg:block lg:sticky top-24">
                     <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                         <Image
                             src="https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=2071&auto=format&fit=crop"

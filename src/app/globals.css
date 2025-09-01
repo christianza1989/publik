@@ -1,3 +1,4 @@
+/* Pakeiskite visą src/app/globals.css failo turinį šiuo kodu */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -150,7 +151,6 @@
   animation: subtle-gradient-pan 25s ease infinite;
 }
 
-/* <<< PRADĖTI KOPIJUOTI ČIA >>> */
 @keyframes button-pulse {
   0% {
     transform: scale(1);
@@ -228,7 +228,7 @@
 .animate-bounce-icon {
   animation: bounce-icon 1s infinite;
 }
-/* <<< PRADĖTI KOPIJUOTI ČIA FEATURES SECTION >>> */
+
 .feature-card {
   position: relative;
 }
@@ -244,10 +244,6 @@
   z-index: -1;
 }
 
-.feature-card:hover::before {
-  opacity: 1;
-}
-/* <<< PRADĖTI KOPIJUOTI ČIA STATS SECTION >>> */
 .stat-card::before {
   content: "";
   position: absolute;
@@ -268,8 +264,14 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.stat-card:hover::before {
-  opacity: 1;
+@media (hover: hover) {
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+
+  .stat-card:hover::before {
+    opacity: 1;
+  }
 }
 
 @property --angle {
