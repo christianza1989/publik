@@ -26,42 +26,72 @@ export const FeaturesSection = () => {
           </p>
         </div>
 
-        <Card className="dark:bg-slate-800/50 dark:backdrop-blur-sm w-full max-w-4xl mx-auto shadow-xl">
-            <CardContent className="p-0">
+        <div className="w-full max-w-4xl mx-auto">
+          {/* Mobile View - Cards */}
+          <div className="md:hidden space-y-4">
+            {comparisonData.map((item) => (
+              <Card key={item.feature} className="dark:bg-slate-800/50 dark:backdrop-blur-sm shadow-lg">
+                <CardContent className="p-4 space-y-3">
+                  <div className="font-bold text-lg text-gray-900 dark:text-white">{item.feature}</div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-semibold text-gray-500 dark:text-gray-400">Tradicinis Būdas:</span>
+                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                      <XCircle className="h-5 w-5 text-red-400 flex-shrink-0" />
+                      <span>{item.traditional}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-semibold text-gray-800 dark:text-white">Su Publikuota.lt:</span>
+                    <div className="flex items-center gap-2 font-semibold text-gray-800 dark:text-white">
+                      <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 animate-icon-pulse" />
+                      <span>{item.publikuota}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Desktop View - Table */}
+          <div className="hidden md:block">
+            <Card className="dark:bg-slate-800/50 dark:backdrop-blur-sm shadow-xl">
+              <CardContent className="p-0">
                 <div className="overflow-x-auto">
-                    <table className="min-w-full text-sm text-left">
-                        <thead className="bg-gray-100/50 dark:bg-white/5">
-                            <tr>
-                                <th scope="col" className="py-4 px-6 font-semibold text-gray-900 dark:text-white">Savybė</th>
-                                <th scope="col" className="py-4 px-6 font-semibold text-gray-500 dark:text-gray-400">Tradicinis Būdas</th>
-                                <th scope="col" className="py-4 px-6 font-semibold text-gray-900 dark:text-white">Su Publikuota.lt</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-white/10">
-                            {comparisonData.map((item) => (
-                                <tr key={item.feature}>
-                                    <td className="whitespace-nowrap py-5 px-6 font-medium text-gray-900 dark:text-white">
-                                        {item.feature}
-                                    </td>
-                                    <td className="whitespace-nowrap py-5 px-6">
-                                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                            <XCircle className="h-5 w-5 text-red-400 flex-shrink-0" />
-                                            <span>{item.traditional}</span>
-                                        </div>
-                                    </td>
-                                    <td className="whitespace-nowrap py-5 px-6 bg-green-500/5">
-                                        <div className="flex items-center gap-2 font-semibold text-gray-800 dark:text-white">
-                                        <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 animate-icon-pulse" />
-                                            <span>{item.publikuota}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                  <table className="min-w-full text-sm text-left">
+                    <thead className="bg-gray-100/50 dark:bg-white/5">
+                      <tr>
+                        <th scope="col" className="py-4 px-6 font-semibold text-gray-900 dark:text-white">Savybė</th>
+                        <th scope="col" className="py-4 px-6 font-semibold text-gray-500 dark:text-gray-400">Tradicinis Būdas</th>
+                        <th scope="col" className="py-4 px-6 font-semibold text-gray-900 dark:text-white">Su Publikuota.lt</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 dark:divide-white/10">
+                      {comparisonData.map((item) => (
+                        <tr key={item.feature}>
+                          <td className="whitespace-nowrap py-5 px-6 font-medium text-gray-900 dark:text-white">
+                            {item.feature}
+                          </td>
+                          <td className="whitespace-nowrap py-5 px-6">
+                            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                              <XCircle className="h-5 w-5 text-red-400 flex-shrink-0" />
+                              <span>{item.traditional}</span>
+                            </div>
+                          </td>
+                          <td className="whitespace-nowrap py-5 px-6 bg-green-500/5">
+                            <div className="flex items-center gap-2 font-semibold text-gray-800 dark:text-white">
+                              <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 animate-icon-pulse" />
+                              <span>{item.publikuota}</span>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-            </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </AnimatedSection>
   );

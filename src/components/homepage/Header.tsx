@@ -1,6 +1,3 @@
-// --- PRADĖK KOPIJUOTI NUO ČIA ---
-// Failas: src/components/homepage/Header.tsx
-
 "use client";
 import { useState, useEffect } from 'react';
 import Link from "next/link";
@@ -53,14 +50,18 @@ export const Header = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+      // <<< PATAISYMAS: Pakeistas z-index iš z-40 į z-50 >>>
+      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm md:hidden"
+      onClick={() => setIsMobileMenuOpen(false)} // Uždaryti meniu paspaudus ant fono
     >
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-slate-900 p-6 flex flex-col"
+        // <<< PATAISYMAS: Pridėtas z-60 ir sustabdomas paspaudimo sklidimas >>>
+        className="fixed top-0 right-0 bottom-0 z-60 w-full max-w-sm bg-slate-900 p-6 flex flex-col h-full overflow-y-auto"
+        onClick={(e) => e.stopPropagation()} // Sustabdo paspaudimo perdavimą fonui
       >
         <div className="flex justify-between items-center mb-10">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white" onClick={() => setIsMobileMenuOpen(false)}>
@@ -88,6 +89,7 @@ export const Header = () => {
         <div className="flex flex-col gap-4 mt-10">
           <div className="flex items-center justify-center gap-2">
             <a href="https://portal.publikuota.lt/lt/login" onClick={() => setIsMobileMenuOpen(false)} className={buttonVariants({ variant: "ghost", className: "text-white hover:bg-white/10 hover:text-white w-full" })}>Prisijungti</a>
+            {/*
             <Button
               variant="ghost"
               size="icon"
@@ -98,6 +100,7 @@ export const Header = () => {
               <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
+            */}
           </div>
           <a href="https://portal.publikuota.lt/lt/signup" onClick={() => setIsMobileMenuOpen(false)} className={buttonVariants({ className: "bg-indigo-600 hover:bg-indigo-700 w-full" })}>Registruotis</a>
         </div>
@@ -130,6 +133,7 @@ export const Header = () => {
             </nav>
 
             <div className="hidden md:flex items-center gap-2">
+              {/*
               <Button
                 variant="ghost"
                 size="icon"
@@ -140,6 +144,7 @@ export const Header = () => {
                 <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
               </Button>
+              */}
               
               <a href="https://portal.publikuota.lt/lt/login" className={buttonVariants({ variant: "ghost", className: "text-white hover:bg-white/10 hover:text-white" })}>Prisijungti</a>
               <a href="https://portal.publikuota.lt/lt/signup" className={buttonVariants({ className: "bg-indigo-600 hover:bg-indigo-700" })}>Registruotis</a>
