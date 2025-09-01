@@ -4,13 +4,12 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "src/components/ui/accordion";
 import { AnimatedSection } from "./AnimatedSection";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { ArrowRight, DollarSign, Sparkles, HelpCircle, Puzzle, Cpu, GitBranch } from "lucide-react";
 
-// <<< Atnaujintas DUK sąrašas su ikonomis >>>
 const faqData = [
   {
     icon: <DollarSign className="h-6 w-6 text-indigo-500" />,
@@ -47,9 +46,7 @@ const faqData = [
 export const FaqSection = () => {
   return (
     <AnimatedSection id="faq" className="relative py-20 sm:py-28 bg-gray-50 dark:bg-slate-900 overflow-hidden">
-        {/* <<< Foninis gradientas >>> */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-radial-gradient(circle, rgba(167, 139, 250, 0.1), transparent 60%) dark:bg-radial-gradient(circle, rgba(167, 139, 250, 0.05), transparent 70%) pointer-events-none"></div>
-
         <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -59,23 +56,17 @@ export const FaqSection = () => {
                     Radote atsakymą į savo klausimą? Jei ne, mes visada pasiruošę padėti.
                 </p>
             </div>
-
-            {/* <<< Struktūros pakeitimas į dvispalvį (split) išdėstymą >>> */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-                
-                {/* Kairė pusė: Akordeonas */}
                 <div className="space-y-4">
                     <Accordion type="single" collapsible className="w-full">
                         {faqData.map((item, index) => (
                             <AccordionItem value={`item-${index + 1}`} key={index} className="bg-white dark:bg-slate-800/50 border dark:border-slate-700/50 rounded-lg shadow-sm mb-4 px-6">
-                                {/* <<< Patobulintas akordeono trigeris su ikona >>> */}
                                 <AccordionTrigger className="text-left font-semibold text-gray-800 dark:text-gray-100 hover:no-underline text-base">
                                     <div className="flex items-center gap-4">
                                         {item.icon}
                                         <span>{item.question}</span>
                                     </div>
                                 </AccordionTrigger>
-                                {/* <<< Patobulintas turinys su šonine linija >>> */}
                                 <AccordionContent className="pt-2">
                                     <div className="border-l-2 border-indigo-500 pl-6 text-muted-foreground">
                                         {item.answer}
@@ -84,8 +75,6 @@ export const FaqSection = () => {
                             </AccordionItem>
                         ))}
                     </Accordion>
-                    
-                    {/* <<< Papildomas CTA blokas >>> */}
                     <div className="text-center mt-8">
                         <Button variant="ghost">
                             Nerandate atsakymo? Susisiekite
@@ -93,8 +82,6 @@ export const FaqSection = () => {
                         </Button>
                     </div>
                 </div>
-
-                {/* Dešinė pusė: Vizualinis elementas */}
                 <div className="hidden lg:block lg:sticky top-24">
                     <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                         <Image
@@ -103,12 +90,10 @@ export const FaqSection = () => {
                             fill
                             className="object-cover"
                         />
-                         {/* <<< Efektas nuotraukai >>> */}
-                        <div className="absolute inset-0 bg-indigo-500/10 mix-blend-multiply"></div>
+                         <div className="absolute inset-0 bg-indigo-500/10 mix-blend-multiply"></div>
                         <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/10 rounded-2xl"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </AnimatedSection>
